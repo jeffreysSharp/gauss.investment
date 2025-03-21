@@ -1,0 +1,6 @@
+@Gauss.Investment.WebAPI_HostAddress = http://localhost:5126
+
+GET {{Gauss.Investment.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Gauss.Investment.Communication\Gauss.Investment.Communication.csproj" />
+    <ProjectReference Include="..\..\Shared\Gauss.Investment.Exceptions\Gauss.Investment.Exceptions.csproj" />
+    <ProjectReference Include="..\Gauss.Investment.Domain\Gauss.Investment.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
