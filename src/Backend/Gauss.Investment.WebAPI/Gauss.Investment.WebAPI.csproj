@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Shared\Gauss.Investment.Communication\Gauss.Investment.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\Gauss.Investment.Exceptions\Gauss.Investment.Exceptions.csproj" />
     <ProjectReference Include="..\Gauss.Investment.Application\Gauss.Investment.Application.csproj" />
