@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gauss.Investment.Communicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gauss.Investment.Exceptions", "src\Shared\Gauss.Investment.Exceptions\Gauss.Investment.Exceptions.csproj", "{89DB264A-1B2C-4257-8017-69B9A3DFDE19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{60C2A0D8-82C5-4EB1-B824-D5243F73A1D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestUtilities", "tests\CommonTestUtilities\CommonTestUtilities.csproj", "{319A636C-0F54-40C8-879C-2D985895320F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{89DB264A-1B2C-4257-8017-69B9A3DFDE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89DB264A-1B2C-4257-8017-69B9A3DFDE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89DB264A-1B2C-4257-8017-69B9A3DFDE19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60C2A0D8-82C5-4EB1-B824-D5243F73A1D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C2A0D8-82C5-4EB1-B824-D5243F73A1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C2A0D8-82C5-4EB1-B824-D5243F73A1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C2A0D8-82C5-4EB1-B824-D5243F73A1D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{319A636C-0F54-40C8-879C-2D985895320F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{319A636C-0F54-40C8-879C-2D985895320F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{319A636C-0F54-40C8-879C-2D985895320F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{319A636C-0F54-40C8-879C-2D985895320F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +81,8 @@ Global
 		{AA19B341-2D38-4077-A4BE-4A84744914F2} = {35E51B70-8EDA-443F-AAC0-853D824E93F0}
 		{4DF36200-BF6A-4076-9393-E833B5912B38} = {653BDFAC-7165-4FFA-8117-84E452B2D200}
 		{89DB264A-1B2C-4257-8017-69B9A3DFDE19} = {653BDFAC-7165-4FFA-8117-84E452B2D200}
+		{60C2A0D8-82C5-4EB1-B824-D5243F73A1D3} = {17BAA1AD-241B-4D88-A638-2ECEBBDAD4DA}
+		{319A636C-0F54-40C8-879C-2D985895320F} = {17BAA1AD-241B-4D88-A638-2ECEBBDAD4DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F2865CC-71DE-4834-85E3-D43C74B7467E}
