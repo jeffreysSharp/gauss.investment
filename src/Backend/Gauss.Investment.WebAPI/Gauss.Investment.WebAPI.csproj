@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>false</InvariantGlobalization>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +15,7 @@
     <ProjectReference Include="..\..\Shared\Gauss.Investment.Communication\Gauss.Investment.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\Gauss.Investment.Exceptions\Gauss.Investment.Exceptions.csproj" />
     <ProjectReference Include="..\Gauss.Investment.Application\Gauss.Investment.Application.csproj" />
+    <ProjectReference Include="..\Gauss.Investment.Infrastructure\Gauss.Investment.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
