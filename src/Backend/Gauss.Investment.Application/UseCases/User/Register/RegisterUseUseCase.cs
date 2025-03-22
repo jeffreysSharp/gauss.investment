@@ -15,41 +15,42 @@ namespace Gauss.Investment.Application.UseCases.User.Register
         private readonly IUserWriteOnlyRepository _writeOnlyRepository;
         private readonly IUserReadOnlyRepository _userReadOnlyRepository;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
         private readonly PasswordEncripter _passwordEncripter;
+        private readonly IMapper _mapper;
+        
 
-        public RegisterUseUseCase(IUserWriteOnlyRepository writeOnlyRepository, 
-            IUserReadOnlyRepository userReadOnlyRepository,
-            PasswordEncripter passwordEncripter,
+        public RegisterUseUseCase(
+            IUserWriteOnlyRepository writeOnlyRepository,
+            IUserReadOnlyRepository userReadOnlyRepository,            
             IUnitOfWork unitOfWork,
-            IMapper mapper)
+            PasswordEncripter passwordEncripter,
+            IMapper mapper
+            )
         {
             _writeOnlyRepository = writeOnlyRepository;
-            _userReadOnlyRepository = userReadOnlyRepository;
-            _passwordEncripter = passwordEncripter;
+            _userReadOnlyRepository = userReadOnlyRepository;            
             _unitOfWork = unitOfWork;
+            _passwordEncripter = passwordEncripter;
             _mapper = mapper;
+            
         }
 
         public async Task<ResponseRegisteredUser> Execute(RequestRegisterUser request)
-        {           
-
+        {
             await Validate(request);
 
             var user = _mapper.Map<Domain.Entities.User>(request);            
-
             user.Password = _passwordEncripter.Encrypt(request.Password);
 
             await _writeOnlyRepository.Add(user);
+
             await _unitOfWork.Commit();
 
             return new ResponseRegisteredUser
             {
-                Name = request.Name,
+                Name = user.Name,
             };
-
         }
-
 
         private async Task Validate(RequestRegisterUser request)
         {
@@ -59,7 +60,7 @@ namespace Gauss.Investment.Application.UseCases.User.Register
 
             var emailExist = await _userReadOnlyRepository.ExistActiveUserWithEmail(request.Email);
 
-            if (emailExist)            
+            if (emailExist)
                 result.Errors.Add(new ValidationFailure(string.Empty, ResourceMesssagesException.EMAIL_ALREADY_REGISTERED));
 
             if (result.IsValid == false)
