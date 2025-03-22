@@ -24,14 +24,14 @@ namespace Gauss.Investment.WebAPI.Filters
                 var exception = context.Exception as ErrorOnValidationException;
 
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new BadRequestObjectResult(new ResponseErrorJson(exception.ErrorMessages));
+                context.Result = new BadRequestObjectResult(new ResponseError(exception.ErrorMessages));
             }
         }
 
         private void ThrowUnknowException(ExceptionContext context)
         {
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            context.Result = new ObjectResult(new ResponseErrorJson(ResourceMesssagesException.UNKNOW_ERROR));
+            context.Result = new ObjectResult(new ResponseError(ResourceMesssagesException.UNKNOW_ERROR));
         }
     }
 }

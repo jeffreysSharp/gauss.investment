@@ -11,10 +11,10 @@ namespace Gauss.Investment.WebAPI.Controllers
     public class UserController : ControllerBase
     {
         [HttpPost]
-        [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ResponseRegisteredUser), StatusCodes.Status201Created)]
         public async Task<IActionResult> Register(
             [FromServices]IRegisterUseCase useCase,
-            [FromBody]RequestRegisterUserJson request)
+            [FromBody]RequestRegisterUser request)
         {
 
             var result = await useCase.Execute(request);
