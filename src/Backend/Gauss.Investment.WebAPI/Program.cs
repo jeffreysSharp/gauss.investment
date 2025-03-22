@@ -1,5 +1,7 @@
 using Gauss.Investment.Application;
 using Gauss.Investment.Infrastructure;
+using Gauss.Investment.Infrastructure.Extensions;
+using Gauss.Investment.Infrastructure.Migrations;
 using Gauss.Investment.WebAPI.Filters;
 using Gauss.Investment.WebAPI.Middleware;
 
@@ -32,4 +34,18 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+MigrateteDatabase();
+
 app.Run();
+
+
+void MigrateteDatabase()
+{
+    var databaseType = builder.Configuration.DatabaseType();
+    var connectionString = builder.Configuration.ConnectionString();
+
+    var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+
+    DatabaseMigration.Migrate(databaseType, connectionString, serviceScope.ServiceProvider);
+}
+    
