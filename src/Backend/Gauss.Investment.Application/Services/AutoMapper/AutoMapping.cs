@@ -13,7 +13,7 @@ namespace Gauss.Investment.Application.Services.AutoMapper
 
         private void RequestToDomain()
         {
-            CreateMap<RequestRegisterUserJson, Domain.Entities.User>()
+            CreateMap<RequestRegisterUser, Domain.Entities.User>()
                 .ForMember(dest => dest.Password, option => option.Ignore());
         }
     }

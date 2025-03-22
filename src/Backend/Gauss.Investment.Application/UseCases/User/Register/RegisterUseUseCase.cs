@@ -31,7 +31,7 @@ namespace Gauss.Investment.Application.UseCases.User.Register
             _mapper = mapper;
         }
 
-        public async Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request)
+        public async Task<ResponseRegisteredUser> Execute(RequestRegisterUser request)
         {           
 
             await Validate(request);
@@ -43,7 +43,7 @@ namespace Gauss.Investment.Application.UseCases.User.Register
             await _writeOnlyRepository.Add(user);
             await _unitOfWork.Commit();
 
-            return new ResponseRegisteredUserJson
+            return new ResponseRegisteredUser
             {
                 Name = request.Name,
             };
@@ -51,7 +51,7 @@ namespace Gauss.Investment.Application.UseCases.User.Register
         }
 
 
-        private async Task Validate(RequestRegisterUserJson request)
+        private async Task Validate(RequestRegisterUser request)
         {
             var validator = new RegisterUserValidator();
 
