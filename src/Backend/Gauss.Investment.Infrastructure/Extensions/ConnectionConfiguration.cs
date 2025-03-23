@@ -1,10 +1,16 @@
 ﻿using Gauss.Investment.Domain.Enums;
 using Microsoft.Extensions.Configuration;
 
+
 namespace Gauss.Investment.Infrastructure.Extensions
 {
     public static class ConnectionConfigurationExtension
     {
+        public static bool IsUnitTestEnvironment(this IConfiguration configuration)
+        {
+           return configuration.GetValue<bool>("InMemoryTest");
+        }
+
         public static DatabaseType DatabaseType(this IConfiguration configuration)
         {
             var dataBaseType = configuration.GetConnectionString("DatabaseType");
