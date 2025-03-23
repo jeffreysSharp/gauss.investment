@@ -36,7 +36,7 @@ app.MapControllers();
 
 MigrateteDatabase();
 
-app.Run();
+await app.RunAsync();
 
 
 void MigrateteDatabase()
