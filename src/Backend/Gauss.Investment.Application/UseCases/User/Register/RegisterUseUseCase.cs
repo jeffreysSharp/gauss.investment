@@ -59,7 +59,6 @@ namespace Gauss.Investment.Application.UseCases.User.Register
             var result = validator.Validate(request);
 
             var emailExist = await _userReadOnlyRepository.ExistActiveUserWithEmail(request.Email);
-
             if (emailExist)
                 result.Errors.Add(new ValidationFailure(string.Empty, ResourceMesssagesException.EMAIL_ALREADY_REGISTERED));
 

@@ -4,6 +4,8 @@ using CommonTestUtilities.Repositories;
 using CommonTestUtilities.Requests;
 using FluentAssertions;
 using Gauss.Investment.Application.UseCases.User.Register;
+using Gauss.Investment.Exceptions;
+using Gauss.Investment.Exceptions.ExceptionsBase;
 
 namespace UseCase.Test.User.Register
 {
@@ -21,15 +23,44 @@ namespace UseCase.Test.User.Register
             result.Name.Should().Be(request.Name);
         }
 
-        private RegisterUseUseCase CreateUseCase()
+        [Fact]
+        public async Task Error_Email_already_registered()
+        {
+            var request = RequestRegisterUserBuilder.Build();
+            var useCase = CreateUseCase(request.Email);
+
+            Func<Task> act = async () => await useCase.Execute(request);
+
+            (await act.Should().ThrowAsync<ErrorOnValidationException>())
+                .Where(e => e.ErrorMessages.Count == 1 && e.ErrorMessages.Contains(ResourceMesssagesException.EMAIL_ALREADY_REGISTERED));
+        }
+
+        [Fact]
+        public async Task Error_Name_Empty()
+        {
+            var request = RequestRegisterUserBuilder.Build();
+            request.Name = string.Empty;
+
+            var useCase = CreateUseCase();
+
+            Func<Task> act = async () => await useCase.Execute(request);
+
+            (await act.Should().ThrowAsync<ErrorOnValidationException>())
+                .Where(e => e.ErrorMessages.Count == 1 && e.ErrorMessages.Contains(ResourceMesssagesException.NAME_EMPTY));
+        }
+
+        private RegisterUseUseCase CreateUseCase(string? email = null)
         {
             var mapper = MapperBuilder.Build();
             var passwordEncripter = PasswordEncripterBuilder.Build();
             var writeRepository = UserWriteOnlyRepositoryBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build();
-            var readRepository = new UserReadOnlyRepositoryBuilder().Build();
+            var readRepositoryBuilder = new UserReadOnlyRepositoryBuilder();
 
-            return new RegisterUseUseCase(writeRepository, readRepository, unitOfWork, passwordEncripter, mapper);
+            if (string.IsNullOrEmpty(email) ==  false)
+                readRepositoryBuilder.ExistActiveUserWithEmail(email);
+
+            return new RegisterUseUseCase(writeRepository, readRepositoryBuilder.Build(), unitOfWork, passwordEncripter, mapper);
         }
     }
 }
