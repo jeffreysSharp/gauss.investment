@@ -62,7 +62,7 @@ namespace Gauss.Investment.Application.UseCases.User.Register
             if (emailExist)
                 result.Errors.Add(new ValidationFailure(string.Empty, ResourceMesssagesException.EMAIL_ALREADY_REGISTERED));
 
-            if (result.IsValid == false)
+            if (!result.IsValid)
             {
                 var errorMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
 

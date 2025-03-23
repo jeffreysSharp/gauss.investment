@@ -49,7 +49,7 @@ namespace UseCase.Test.User.Register
                 .Where(e => e.ErrorMessages.Count == 1 && e.ErrorMessages.Contains(ResourceMesssagesException.NAME_EMPTY));
         }
 
-        private RegisterUseUseCase CreateUseCase(string? email = null)
+        private static RegisterUseUseCase CreateUseCase(string? email = null)
         {
             var mapper = MapperBuilder.Build();
             var passwordEncripter = PasswordEncripterBuilder.Build();

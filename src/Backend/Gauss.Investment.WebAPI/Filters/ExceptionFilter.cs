@@ -13,18 +13,18 @@ namespace Gauss.Investment.WebAPI.Filters
         {
             if (context.Exception is GaussInvestmentException)
                 HandleProjectException(context);
-            //else
-            //    ThrowUnknowException(context);
+            else
+                ThrowUnknowException(context);
         }
 
-        private void HandleProjectException(ExceptionContext context)
+        private static void HandleProjectException(ExceptionContext context)
         {
             if (context.Exception is ErrorOnValidationException)
             {
                 var exception = context.Exception as ErrorOnValidationException;
 
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new BadRequestObjectResult(new ResponseError(exception.ErrorMessages));
+                context.Result = new BadRequestObjectResult(new ResponseError(exception!.ErrorMessages));
             }
         }
 
