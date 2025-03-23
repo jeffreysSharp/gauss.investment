@@ -1,6 +1,6 @@
 ﻿namespace Gauss.Investment.Communication.Requests
 {
-    public class RequestRegisterUserJson
+    public class RequestRegisterUser
     {
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; }   = string.Empty ;

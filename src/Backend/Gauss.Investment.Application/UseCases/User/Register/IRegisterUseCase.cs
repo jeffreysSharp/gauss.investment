@@ -5,6 +5,6 @@ namespace Gauss.Investment.Application.UseCases.User.Register
 {
     public interface IRegisterUseCase
     {
-        public Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request);
+        public Task<ResponseRegisteredUser> Execute(RequestRegisterUser request);
     }
 }
