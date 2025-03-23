@@ -16,6 +16,11 @@ namespace Gauss.Investment.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            AddRepositories(services);
+
+            if (configuration.IsUnitTestEnvironment())
+                return;
+
             var databaseType = configuration.DatabaseType();
             if (databaseType == DatabaseType.MySql)
             {
@@ -26,9 +31,7 @@ namespace Gauss.Investment.Infrastructure
             {
                 AddDbContextSqlServer(services, configuration);
                 AddFluentMIgrator_SqlServer(services, configuration);
-            }
-
-            AddRepositories(services);
+            } 
         }
 
         private static void AddDbContextMySql(IServiceCollection services, IConfiguration configuration)
