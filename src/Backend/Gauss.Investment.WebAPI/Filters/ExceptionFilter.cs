@@ -19,16 +19,13 @@ namespace Gauss.Investment.WebAPI.Filters
 
         private static void HandleProjectException(ExceptionContext context)
         {
-            if (context.Exception is ErrorOnValidationException)
-            {
-                var exception = context.Exception as ErrorOnValidationException;
+            var exception = context.Exception as ErrorOnValidationException;
 
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new BadRequestObjectResult(new ResponseError(exception!.ErrorMessages));
-            }
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            context.Result = new BadRequestObjectResult(new ResponseError(exception!.ErrorMessages));
         }
 
-        private void ThrowUnknowException(ExceptionContext context)
+        private static void ThrowUnknowException(ExceptionContext context)
         {
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             context.Result = new ObjectResult(new ResponseError(ResourceMesssagesException.UNKNOW_ERROR));
