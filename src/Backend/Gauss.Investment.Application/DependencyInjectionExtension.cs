@@ -1,5 +1,6 @@
 ﻿using Gauss.Investment.Application.Cryptography;
 using Gauss.Investment.Application.Services.AutoMapper;
+using Gauss.Investment.Application.UseCases.Login.DoLogin;
 using Gauss.Investment.Application.UseCases.User.Register;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,7 @@ namespace Gauss.Investment.Application
         private static void AddUseCases(IServiceCollection services)
         {
             services.AddScoped<IRegisterUseCase, RegisterUseUseCase>();
+            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
         }
 
         private static void AddPasswordEncripter(IServiceCollection services, IConfiguration configuration)
