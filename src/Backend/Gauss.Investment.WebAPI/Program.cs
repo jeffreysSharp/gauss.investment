@@ -2,13 +2,15 @@ using Gauss.Investment.Application;
 using Gauss.Investment.Infrastructure;
 using Gauss.Investment.Infrastructure.Extensions;
 using Gauss.Investment.Infrastructure.Migrations;
+using Gauss.Investment.WebAPI.Converters;
 using Gauss.Investment.WebAPI.Filters;
 using Gauss.Investment.WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options => 
+options.JsonSerializerOptions.Converters.Add(new StringConverter()));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -17,6 +19,7 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)))
 
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddRouting(option => option.LowercaseUrls = true);
 
 var app = builder.Build();
 
