@@ -19,10 +19,18 @@ namespace Gauss.Investment.WebAPI.Filters
 
         private static void HandleProjectException(ExceptionContext context)
         {
-            var exception = context.Exception as ErrorOnValidationException;
+            if (context.Exception is InvalidLoginException)
+            {                
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                context.Result = new UnauthorizedObjectResult(new ResponseError(context.Exception.Message));
+            }
+            else if (context.Exception is ErrorOnValidationException)
+            {
+                var exception = context.Exception as ErrorOnValidationException;
 
-            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            context.Result = new BadRequestObjectResult(new ResponseError(exception!.ErrorMessages));
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                context.Result = new BadRequestObjectResult(new ResponseError(exception!.ErrorMessages));
+            }
         }
 
         private static void ThrowUnknowException(ExceptionContext context)

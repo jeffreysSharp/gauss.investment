@@ -2,13 +2,10 @@
 using Gauss.Investment.Communication.Requests;
 using Gauss.Investment.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Gauss.Investment.WebAPI.Controllers
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : MainController
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredUser), StatusCodes.Status201Created)]
