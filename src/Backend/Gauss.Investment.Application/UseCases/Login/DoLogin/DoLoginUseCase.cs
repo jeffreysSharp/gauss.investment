@@ -2,6 +2,7 @@
 using Gauss.Investment.Communication.Requests;
 using Gauss.Investment.Communication.Responses;
 using Gauss.Investment.Domain.Repositories.User;
+using Gauss.Investment.Domain.Secuturity.Tokens;
 using Gauss.Investment.Exceptions.ExceptionsBase;
 
 namespace Gauss.Investment.Application.UseCases.Login.DoLogin
@@ -10,11 +11,16 @@ namespace Gauss.Investment.Application.UseCases.Login.DoLogin
     {
         private readonly IUserReadOnlyRepository _repository;
         private readonly PasswordEncripter _passwordEncripter;
-
-        public DoLoginUseCase(IUserReadOnlyRepository repository, PasswordEncripter passwordEncripter)
+        private readonly IAccessTokenGenerator _accessTokenGenerator;
+        
+        public DoLoginUseCase(
+            IUserReadOnlyRepository repository,
+            IAccessTokenGenerator accessTokenGenerator,
+            PasswordEncripter passwordEncripter)
         {
-            _repository = repository;
+            _repository = repository;            
             _passwordEncripter = passwordEncripter;
+            _accessTokenGenerator = accessTokenGenerator;
         }
 
         public async Task<ResponseRegisteredUser> Execute(RequestLogin request)
@@ -26,6 +32,10 @@ namespace Gauss.Investment.Application.UseCases.Login.DoLogin
             return new ResponseRegisteredUser
             {
                 Name = user.Name,
+                Tokens = new ResponseTokens
+                {
+                    AccessToken = _accessTokenGenerator.Generete(user.UserIdentifier)
+                }
             };
         }
     }

@@ -2,10 +2,10 @@
 using CommonTestUtilities.Entities;
 using CommonTestUtilities.Repositories;
 using CommonTestUtilities.Requests;
+using CommonTestUtilities.Tokens;
 using FluentAssertions;
 using Gauss.Investment.Application.UseCases.Login.DoLogin;
 using Gauss.Investment.Communication.Requests;
-using Gauss.Investment.Domain.Entities;
 using Gauss.Investment.Exceptions;
 using Gauss.Investment.Exceptions.ExceptionsBase;
 
@@ -26,7 +26,9 @@ namespace UseCase.Test.Login.DoLogin
             });
 
             result.Should().NotBeNull();
+            result.Tokens.Should().NotBeNull();
             result.Name.Should().NotBeNullOrWhiteSpace().And.Be(user.Name);
+            result.Tokens.AccessToken.Should().NotBeNullOrEmpty();
         }
 
         [Fact]
@@ -46,11 +48,12 @@ namespace UseCase.Test.Login.DoLogin
         {
             var passwordEncripter = PasswordEncripterBuilder.Build();
             var userReadOnlyRepositoryBuilder = new UserReadOnlyRepositoryBuilder();
+            var accessTokenGenerator = JwtGeneratorBuilder.Build();            
 
             if (user is not null)
                 userReadOnlyRepositoryBuilder.GetUserByEmailAndPassword(user);
 
-            return new DoLoginUseCase(userReadOnlyRepositoryBuilder.Build(), passwordEncripter);
+            return new DoLoginUseCase(userReadOnlyRepositoryBuilder.Build(), accessTokenGenerator, passwordEncripter);
         }
     }
 }

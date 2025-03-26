@@ -4,6 +4,7 @@ using Gauss.Investment.Communication.Requests;
 using Gauss.Investment.Exceptions;
 using System.Globalization;
 using System.Net;
+using System.Net.Http.Json;
 using System.Text.Json;
 using WebApi.Test.InlineData;
 
@@ -39,8 +40,9 @@ namespace WebApi.Test.DoLogin
 
             var responseData = await JsonDocument.ParseAsync(responseBody);
 
-            responseData.RootElement.GetProperty("name").GetString().Should().NotBeNullOrWhiteSpace()
-                .And.Be(_name);
+            responseData.RootElement.GetProperty("name").GetString().Should().NotBeNullOrWhiteSpace().And.Be(_name);
+            responseData.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().Should().NotBeNullOrEmpty();
+
         }
 
         [Theory]

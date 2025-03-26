@@ -29,6 +29,8 @@ namespace WebApi.Test
                         options.UseInternalServiceProvider(provider);
                     });
 
+
+
                     using  var scope = services.BuildServiceProvider().CreateScope();
                     var dbContext = scope.ServiceProvider.GetRequiredService<GaussInvestmentDbContext>();
 
@@ -45,6 +47,7 @@ namespace WebApi.Test
         private void StartDatabase(GaussInvestmentDbContext dbContext)
         {
             (_user, _password) = UserBuilder.Build();
+
             dbContext.Users.Add(_user);
             dbContext.SaveChanges();
         }

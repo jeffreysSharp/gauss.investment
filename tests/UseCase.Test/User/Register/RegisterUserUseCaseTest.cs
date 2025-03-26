@@ -2,14 +2,16 @@
 using CommonTestUtilities.Mapper;
 using CommonTestUtilities.Repositories;
 using CommonTestUtilities.Requests;
+using CommonTestUtilities.Tokens;
 using FluentAssertions;
 using Gauss.Investment.Application.UseCases.User.Register;
+using Gauss.Investment.Domain.Extensions;
 using Gauss.Investment.Exceptions;
 using Gauss.Investment.Exceptions.ExceptionsBase;
 
 namespace UseCase.Test.User.Register
 {
-    public class RegisterUseUseCaseTest
+    public class RegisterUserUseCaseTest
     {
         [Fact]
         public async Task Success()
@@ -20,7 +22,9 @@ namespace UseCase.Test.User.Register
             var result = await useCase.Execute(request);
 
             result.Should().NotBeNull();
+            result.Tokens.AccessToken.Should().NotBeNullOrEmpty();
             result.Name.Should().Be(request.Name);
+            result.Tokens.AccessToken.Should().NotBeNullOrEmpty();
         }
 
         [Fact]
@@ -49,18 +53,20 @@ namespace UseCase.Test.User.Register
                 .Where(e => e.ErrorMessages.Count == 1 && e.ErrorMessages.Contains(ResourceMesssagesException.NAME_EMPTY));
         }
 
-        private static RegisterUseUseCase CreateUseCase(string? email = null)
+        private static RegisterUserUseCase CreateUseCase(string? email = null)
         {
             var mapper = MapperBuilder.Build();
             var passwordEncripter = PasswordEncripterBuilder.Build();
             var writeRepository = UserWriteOnlyRepositoryBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build();
             var readRepositoryBuilder = new UserReadOnlyRepositoryBuilder();
+            var accessTokenGenerator = JwtGeneratorBuilder.Build();
 
-            if (string.IsNullOrEmpty(email) ==  false)
+
+            if (string.IsNullOrEmpty(email).IsFalse())
                 readRepositoryBuilder.ExistActiveUserWithEmail(email);
 
-            return new RegisterUseUseCase(writeRepository, readRepositoryBuilder.Build(), unitOfWork, passwordEncripter, mapper);
+            return new RegisterUserUseCase(writeRepository, readRepositoryBuilder.Build(), unitOfWork, passwordEncripter, accessTokenGenerator, mapper);
         }
     }
 }
