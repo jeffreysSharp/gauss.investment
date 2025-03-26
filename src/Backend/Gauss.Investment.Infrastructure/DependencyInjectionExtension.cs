@@ -2,9 +2,11 @@
 using Gauss.Investment.Domain.Enums;
 using Gauss.Investment.Domain.Repositories;
 using Gauss.Investment.Domain.Repositories.User;
+using Gauss.Investment.Domain.Secuturity.Tokens;
 using Gauss.Investment.Infrastructure.Data;
 using Gauss.Investment.Infrastructure.Data.Repositories;
 using Gauss.Investment.Infrastructure.Extensions;
+using Gauss.Investment.Infrastructure.Security.Accss.Generator;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,7 @@ namespace Gauss.Investment.Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             AddRepositories(services);
+            AddTokens(services, configuration); 
 
             if (configuration.IsUnitTestEnvironment())
                 return;
@@ -88,6 +91,14 @@ namespace Gauss.Investment.Infrastructure
                 .WithGlobalConnectionString(connectionsString)
                 .ScanIn(Assembly.Load("Gauss.Investment.Infrastructure")).For.All();
             });
+        }
+    
+        private static void AddTokens(IServiceCollection services, IConfiguration configuration)
+        {
+            var expirationTimeMinutes = configuration.GetValue<uint>("Settings:Jwt:ExpirationTimeMinutes");
+            var signingKey = configuration.GetValue<string>("Settings:Jwt:SigningKey");
+
+            services.AddScoped<IAccessTokenGenerator>(option => new JwtTokenGenerator(expirationTimeMinutes, signingKey!));
         }
     }
 }

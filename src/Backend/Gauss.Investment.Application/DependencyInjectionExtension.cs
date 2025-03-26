@@ -26,7 +26,7 @@ namespace Gauss.Investment.Application
 
         private static void AddUseCases(IServiceCollection services)
         {
-            services.AddScoped<IRegisterUseCase, RegisterUseUseCase>();
+            services.AddScoped<IRegisterUseCase, RegisterUserUseCase>();
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
         }
 

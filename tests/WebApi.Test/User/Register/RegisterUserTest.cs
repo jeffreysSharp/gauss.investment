@@ -3,7 +3,6 @@ using FluentAssertions;
 using Gauss.Investment.Exceptions;
 using System.Globalization;
 using System.Net;
-using System.Net.Http.Json;
 using System.Text.Json;
 using WebApi.Test.InlineData;
 
@@ -19,7 +18,7 @@ namespace WebApi.Test.User.Register
         public async Task Success()
         {
             var request = RequestRegisterUserBuilder.Build();
-            
+
             var response = await DoPost(_method, request);
 
             response.StatusCode.Should().Be(HttpStatusCode.Created);
@@ -28,19 +27,18 @@ namespace WebApi.Test.User.Register
 
             var responseData = await JsonDocument.ParseAsync(responseBody);
 
-            responseData.RootElement.GetProperty("name").GetString().Should().NotBeNullOrWhiteSpace()
-                .And.Be(request.Name);
-
+            responseData.RootElement.GetProperty("name").GetString().Should().NotBeNullOrWhiteSpace().And.Be(request.Name);
+            responseData.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().Should().NotBeNullOrEmpty();
         }
 
         [Theory]
-        [ClassData(typeof(CultureInlineDataTest))]   
+        [ClassData(typeof(CultureInlineDataTest))]
         public async Task Error_Empty_Name(string culture)
         {
             var request = RequestRegisterUserBuilder.Build();
             request.Name = string.Empty;
 
-            var response = await  DoPost(_method, request, culture );
+            var response = await DoPost(_method, request, culture);
 
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
