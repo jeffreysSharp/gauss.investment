@@ -17,7 +17,7 @@ namespace Gauss.Investment.Infrastructure.Security.Access.Generator
             _signingKey = signingKey;
         }
 
-        public string Generete(Guid userIdentifier)
+        public string Generate(Guid userIdentifier)
         {
             var claims = new List<Claim>()
             {

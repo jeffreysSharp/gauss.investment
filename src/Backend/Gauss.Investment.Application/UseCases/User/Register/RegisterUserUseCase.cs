@@ -56,7 +56,7 @@ namespace Gauss.Investment.Application.UseCases.User.Register
                 Name = user.Name,
                 Tokens = new ResponseTokens
                 {
-                    AccessToken = _accessTokenGenerator.Generete(user.UserIdentifier)
+                    AccessToken = _accessTokenGenerator.Generate(user.UserIdentifier)
                 }
             };
         }

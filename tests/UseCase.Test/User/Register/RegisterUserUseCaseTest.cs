@@ -60,7 +60,7 @@ namespace UseCase.Test.User.Register
             var writeRepository = UserWriteOnlyRepositoryBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build();
             var readRepositoryBuilder = new UserReadOnlyRepositoryBuilder();
-            var accessTokenGenerator = JwtGeneratorBuilder.Build();
+            var accessTokenGenerator = JwtTokenGeneratorBuilder.Build();
 
 
             if (string.IsNullOrEmpty(email).IsFalse())
