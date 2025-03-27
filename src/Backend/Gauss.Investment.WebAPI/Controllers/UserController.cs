@@ -1,4 +1,5 @@
-﻿using Gauss.Investment.Application.UseCases.User.Register;
+﻿using Gauss.Investment.Application.UseCases.User.Profile;
+using Gauss.Investment.Application.UseCases.User.Register;
 using Gauss.Investment.Communication.Requests;
 using Gauss.Investment.Communication.Responses;
 using Gauss.Investment.WebAPI.Attributes;
@@ -6,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gauss.Investment.WebAPI.Controllers
 {
-    // [AuthenticatedUser]
     public class UserController : MainController
     {
         [HttpPost]
@@ -19,6 +19,16 @@ namespace Gauss.Investment.WebAPI.Controllers
             var result = await useCase.Execute(request);
 
             return Created(string.Empty, result);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(ResponseUserProfile), StatusCodes.Status200OK)]
+        [AuthenticatedUser]
+        public async Task<IActionResult> GetUserProfile([FromServices] IGetUserProfileUseCase useCase)
+        {
+            var result = await useCase.Execute();
+
+            return Ok(result);
         }
     }
 }

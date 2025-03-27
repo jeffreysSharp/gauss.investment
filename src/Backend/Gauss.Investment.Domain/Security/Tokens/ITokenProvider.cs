@@ -1,0 +1,7 @@
+﻿namespace Gauss.Investment.Domain.Security.Tokens
+{
+    public interface ITokenProvider
+    {
+        public string Value();
+    }
+}
