@@ -1,10 +1,12 @@
 using Gauss.Investment.Application;
+using Gauss.Investment.Domain.Security.Tokens;
 using Gauss.Investment.Infrastructure;
 using Gauss.Investment.Infrastructure.Extensions;
 using Gauss.Investment.Infrastructure.Migrations;
 using Gauss.Investment.WebAPI.Converters;
 using Gauss.Investment.WebAPI.Filters;
 using Gauss.Investment.WebAPI.Middleware;
+using Gauss.Investment.WebAPI.Token;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -60,7 +62,10 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)))
 
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddScoped<ITokenProvider, HttpContextTokenValue>();
 builder.Services.AddRouting(option => option.LowercaseUrls = true);
+builder.Services.AddHttpContextAccessor();
+
 
 var app = builder.Build();
 
