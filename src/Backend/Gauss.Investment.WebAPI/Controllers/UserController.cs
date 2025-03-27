@@ -1,5 +1,6 @@
 ﻿using Gauss.Investment.Application.UseCases.User.Profile;
 using Gauss.Investment.Application.UseCases.User.Register;
+using Gauss.Investment.Application.UseCases.User.Update;
 using Gauss.Investment.Communication.Requests;
 using Gauss.Investment.Communication.Responses;
 using Gauss.Investment.WebAPI.Attributes;
@@ -29,6 +30,18 @@ namespace Gauss.Investment.WebAPI.Controllers
             var result = await useCase.Execute();
 
             return Ok(result);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
+        [AuthenticatedUser]
+        public async Task<IActionResult> Update([FromServices] IUpdateUserUseCase useCase,
+            [FromBody] RequestUpdateUser request)
+        {
+            await useCase.Execute(request);
+
+            return NoContent();
         }
     }
 }
