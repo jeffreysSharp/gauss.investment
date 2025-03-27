@@ -48,7 +48,7 @@ namespace UseCase.Test.Login.DoLogin
         {
             var passwordEncripter = PasswordEncripterBuilder.Build();
             var userReadOnlyRepositoryBuilder = new UserReadOnlyRepositoryBuilder();
-            var accessTokenGenerator = JwtGeneratorBuilder.Build();            
+            var accessTokenGenerator = JwtTokenGeneratorBuilder.Build();            
 
             if (user is not null)
                 userReadOnlyRepositoryBuilder.GetUserByEmailAndPassword(user);

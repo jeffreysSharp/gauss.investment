@@ -34,7 +34,7 @@ namespace Gauss.Investment.Application.UseCases.Login.DoLogin
                 Name = user.Name,
                 Tokens = new ResponseTokens
                 {
-                    AccessToken = _accessTokenGenerator.Generete(user.UserIdentifier)
+                    AccessToken = _accessTokenGenerator.Generate(user.UserIdentifier)
                 }
             };
         }
