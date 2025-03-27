@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Backend\Gauss.Investment.Application\Gauss.Investment.Application.csproj" />
+    <ProjectReference Include="..\..\src\Backend\Gauss.Investment.Infrastructure\Gauss.Investment.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\Shared\Gauss.Investment.Communication\Gauss.Investment.Communication.csproj" />
   </ItemGroup>
 

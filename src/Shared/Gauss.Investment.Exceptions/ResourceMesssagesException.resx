@@ -132,10 +132,16 @@
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>The name cannot be empty.</value>
   </data>
+  <data name="NO_TOKEN" xml:space="preserve">
+    <value>No token found.</value>
+  </data>
   <data name="PASSWORD_EMPTY" xml:space="preserve">
     <value>The password must be longer than 6 characters.</value>
   </data>
   <data name="UNKNOW_ERROR" xml:space="preserve">
     <value>Unknow error.</value>
+  </data>
+  <data name="USER_WITHOUT_PERMISSION_ACCES_RESOURCE" xml:space="preserve">
+    <value>Use without permission to access or resource.</value>
   </data>
 </root>
