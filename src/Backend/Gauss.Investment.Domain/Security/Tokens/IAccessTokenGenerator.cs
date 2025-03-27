@@ -1,4 +1,4 @@
-﻿namespace Gauss.Investment.Domain.Secuturity.Tokens
+﻿namespace Gauss.Investment.Domain.Security.Tokens
 {
     public interface IAccessTokenGenerator
     {

@@ -1,5 +1,5 @@
-﻿using Gauss.Investment.Domain.Secuturity.Tokens;
-using Gauss.Investment.Infrastructure.Security.Accss.Generator;
+﻿using Gauss.Investment.Domain.Security.Tokens;
+using Gauss.Investment.Infrastructure.Security.Access.Generator;
 
 namespace CommonTestUtilities.Tokens
 {

@@ -2,11 +2,12 @@
 using Gauss.Investment.Domain.Enums;
 using Gauss.Investment.Domain.Repositories;
 using Gauss.Investment.Domain.Repositories.User;
-using Gauss.Investment.Domain.Secuturity.Tokens;
+using Gauss.Investment.Domain.Security.Tokens;
 using Gauss.Investment.Infrastructure.Data;
 using Gauss.Investment.Infrastructure.Data.Repositories;
 using Gauss.Investment.Infrastructure.Extensions;
-using Gauss.Investment.Infrastructure.Security.Accss.Generator;
+using Gauss.Investment.Infrastructure.Security.Access.Generator;
+using Gauss.Investment.Infrastructure.Security.Access.Validator;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -99,6 +100,7 @@ namespace Gauss.Investment.Infrastructure
             var signingKey = configuration.GetValue<string>("Settings:Jwt:SigningKey");
 
             services.AddScoped<IAccessTokenGenerator>(option => new JwtTokenGenerator(expirationTimeMinutes, signingKey!));
+            services.AddScoped<IAccessTokenValidator>(option => new JwtTokenValidator(signingKey!));
         }
     }
 }
