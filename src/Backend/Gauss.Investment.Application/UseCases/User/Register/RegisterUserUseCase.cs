@@ -5,7 +5,7 @@ using Gauss.Investment.Communication.Requests;
 using Gauss.Investment.Communication.Responses;
 using Gauss.Investment.Domain.Repositories;
 using Gauss.Investment.Domain.Repositories.User;
-using Gauss.Investment.Domain.Secuturity.Tokens;
+using Gauss.Investment.Domain.Security.Tokens;
 using Gauss.Investment.Exceptions;
 using Gauss.Investment.Exceptions.ExceptionsBase;
 
