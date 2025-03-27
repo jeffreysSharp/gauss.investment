@@ -9,12 +9,12 @@ namespace Gauss.Investment.Infrastructure.Security.Accss.Generator
     public class JwtTokenGenerator : IAccessTokenGenerator
     {
         private readonly uint _expirationTimeMinutes;
-        private readonly string _signinKey;
+        private readonly string _signingKey;
 
         public JwtTokenGenerator(uint expirationTimeMinutes, string signingKey)
         {
             _expirationTimeMinutes = expirationTimeMinutes;
-            _signinKey = signingKey;
+            _signingKey = signingKey;
         }
 
         public string Generete(Guid userIdentifier)
@@ -39,7 +39,7 @@ namespace Gauss.Investment.Infrastructure.Security.Accss.Generator
 
         private SymmetricSecurityKey SecurityKey()
         {
-            var bytes = Encoding.UTF8.GetBytes(_signinKey);
+            var bytes = Encoding.UTF8.GetBytes(_signingKey);
 
             return new SymmetricSecurityKey(bytes);
         }

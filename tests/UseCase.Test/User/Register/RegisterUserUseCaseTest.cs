@@ -22,7 +22,7 @@ namespace UseCase.Test.User.Register
             var result = await useCase.Execute(request);
 
             result.Should().NotBeNull();
-            result.Tokens.AccessToken.Should().NotBeNullOrEmpty();
+            result.Tokens.Should().NotBeNull();
             result.Name.Should().Be(request.Name);
             result.Tokens.AccessToken.Should().NotBeNullOrEmpty();
         }
