@@ -5,6 +5,7 @@ using Gauss.Investment.Domain.Repositories.User;
 using Gauss.Investment.Domain.Security.Cryptography;
 using Gauss.Investment.Domain.Services.LoggedUser;
 using Gauss.Investment.Exceptions;
+using Gauss.Investment.Exceptions.ExceptionsBase;
 
 namespace Gauss.Investment.Application.UseCases.User.ChangePassword
 {
@@ -51,7 +52,8 @@ namespace Gauss.Investment.Application.UseCases.User.ChangePassword
             if (currentPasswordfEncripted.Equals(loggedUser.Password).IsFalse())
                 result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMesssagesException.PASSWORD_DIFFERENT_CURRENT_PASSWORD));
 
-
+            if (result.IsValid.IsFalse())
+                throw new ErrorOnValidationException(result.Errors.Select(e => e.ErrorMessage).ToList());
         }
     }
 }
