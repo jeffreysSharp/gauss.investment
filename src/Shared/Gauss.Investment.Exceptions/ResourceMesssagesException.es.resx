@@ -118,36 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
-    <value>E-mail já registrado.</value>
+    <value>Correo electrónico ya registrado.</value>
   </data>
   <data name="EMAIL_EMPTY" xml:space="preserve">
-    <value>O e-mail não pode estar vazio</value>
+    <value>El correo electrónico no puede estar vacío.</value>
   </data>
   <data name="EMAIL_INVALID" xml:space="preserve">
-    <value>O e-mail é inválido</value>
+    <value>La dirección de correo electrónico no es válida.</value>
   </data>
   <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
-    <value>E-mail e/ou/senha inválido(s).</value>
+    <value>Correo electrónico y/o contraseña no válidos.</value>
   </data>
   <data name="INVALID_PASSWORD" xml:space="preserve">
-    <value>Senha inválida.</value>
+    <value>Utilizar sin permiso de acceso o recurso.</value>
   </data>
   <data name="NAME_EMPTY" xml:space="preserve">
-    <value>O nome não pode estar vazio.</value>
+    <value>El nombre no puede estar vacío.</value>
   </data>
   <data name="NO_TOKEN" xml:space="preserve">
-    <value>Nenhum token encontrado.</value>
+    <value>No se encontró ningún token.</value>
   </data>
   <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
-    <value>A nova senha deve ser diferente da senha atual.</value>
+    <value>La nueva contraseña debe ser diferente de la contraseña actual..</value>
   </data>
   <data name="PASSWORD_EMPTY" xml:space="preserve">
-    <value>A senha deve ter mais de 6 caracteres</value>
+    <value>La contraseña debe tener más de 6 caracteres.</value>
   </data>
   <data name="UNKNOW_ERROR" xml:space="preserve">
-    <value>Erro desconhecido.</value>
+    <value>Error desconocido.</value>
   </data>
   <data name="USER_WITHOUT_PERMISSION_ACCES_RESOURCE" xml:space="preserve">
-    <value>Usuário sem permissão de acesso ao recurso.</value>
+    <value>Use without permission to access or resource.</value>
   </data>
 </root>
