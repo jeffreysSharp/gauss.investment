@@ -1,6 +1,6 @@
-﻿using Gauss.Investment.Application.Cryptography;
-using Gauss.Investment.Application.Services.AutoMapper;
+﻿using Gauss.Investment.Application.Services.AutoMapper;
 using Gauss.Investment.Application.UseCases.Login.DoLogin;
+using Gauss.Investment.Application.UseCases.User.ChangePassword;
 using Gauss.Investment.Application.UseCases.User.Profile;
 using Gauss.Investment.Application.UseCases.User.Register;
 using Gauss.Investment.Application.UseCases.User.Update;
@@ -15,7 +15,6 @@ namespace Gauss.Investment.Application
         {
             AddAutoMapper(services);
             AddUseCases(services);
-            AddPasswordEncripter(services, configuration);
         }
 
         private static void AddAutoMapper(IServiceCollection services)
@@ -32,12 +31,7 @@ namespace Gauss.Investment.Application
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
             services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
             services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
-        }
-
-        private static void AddPasswordEncripter(IServiceCollection services, IConfiguration configuration)
-        {
-            var additionalKey = configuration.GetValue<string>("Settings:Password:AdditionalKey");
-            services.AddScoped(option => new PasswordEncripter(additionalKey!));
+            services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
         }
     }
 }

@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="ResourceMesssagesException.es.Designer.cs">
+      <DependentUpon>ResourceMesssagesException.es.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="ResourceMesssagesException.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

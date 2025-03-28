@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using FluentValidation.Results;
-using Gauss.Investment.Application.Cryptography;
 using Gauss.Investment.Communication.Requests;
 using Gauss.Investment.Communication.Responses;
 using Gauss.Investment.Domain.Repositories;
 using Gauss.Investment.Domain.Repositories.User;
+using Gauss.Investment.Domain.Security.Cryptography;
 using Gauss.Investment.Domain.Security.Tokens;
 using Gauss.Investment.Exceptions;
 using Gauss.Investment.Exceptions.ExceptionsBase;
@@ -18,7 +18,7 @@ namespace Gauss.Investment.Application.UseCases.User.Register
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IAccessTokenGenerator _accessTokenGenerator;
-        private readonly PasswordEncripter _passwordEncripter;
+        private readonly IPasswordEncripter _passwordEncripter;
                
         
 
@@ -26,7 +26,7 @@ namespace Gauss.Investment.Application.UseCases.User.Register
             IUserWriteOnlyRepository writeOnlyRepository,
             IUserReadOnlyRepository userReadOnlyRepository,            
             IUnitOfWork unitOfWork,
-            PasswordEncripter passwordEncripter,
+            IPasswordEncripter passwordEncripter,
             IAccessTokenGenerator accessTokenGenerator,
             IMapper mapper
             )

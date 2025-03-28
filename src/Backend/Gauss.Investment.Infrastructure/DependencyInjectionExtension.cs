@@ -2,6 +2,7 @@
 using Gauss.Investment.Domain.Enums;
 using Gauss.Investment.Domain.Repositories;
 using Gauss.Investment.Domain.Repositories.User;
+using Gauss.Investment.Domain.Security.Cryptography;
 using Gauss.Investment.Domain.Security.Tokens;
 using Gauss.Investment.Domain.Services.LoggedUser;
 using Gauss.Investment.Infrastructure.Data;
@@ -9,6 +10,7 @@ using Gauss.Investment.Infrastructure.Data.Repositories;
 using Gauss.Investment.Infrastructure.Extensions;
 using Gauss.Investment.Infrastructure.Security.Access.Generator;
 using Gauss.Investment.Infrastructure.Security.Access.Validator;
+using Gauss.Investment.Infrastructure.Security.Cryptography;
 using Gauss.Investment.Infrastructure.Services.LoggedUser;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,7 @@ namespace Gauss.Investment.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            AddPasswordEncripter(services, configuration);
             AddRepositories(services);
             AddLoggedUser(services);
             AddTokens(services, configuration); 
@@ -67,7 +70,7 @@ namespace Gauss.Investment.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
-            services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
+            services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();            
         }
 
         private static void AddFluentMIgrator_MySql(IServiceCollection services, IConfiguration configuration)
@@ -108,5 +111,11 @@ namespace Gauss.Investment.Infrastructure
         }
 
         private static void AddLoggedUser(IServiceCollection services) => services.AddScoped<ILoggedUser, LoggedUser>();
+
+        private static void AddPasswordEncripter(IServiceCollection services, IConfiguration configuration)
+        {
+            var additionalKey = configuration.GetValue<string>("Settings:Password:AdditionalKey");
+            services.AddScoped<IPasswordEncripter>(option => new Sha512Encripter(additionalKey!));
+        }
     }
 }
