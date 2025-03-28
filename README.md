@@ -1,5 +1,7 @@
 # 💼 Gauss Investment Platform
 
+
+[![Prject Skills](https://skillicons.dev/icons?i=dotnet,cs,teact,ts,html,css,bootstrap,docker,github,githubactions,rabbitmq,azure,mysql,mongodb,postgres,)](https://skillicons.dev)
 Complete system for the investment market, focusing on **onboarding**, **suitability**, **credit analysis**, **operational limits**, and **regulatory compliance**. Built with a layered architecture following the principles of **DDD**, **Clean Code**, and **SOLID**.
 
 ---
