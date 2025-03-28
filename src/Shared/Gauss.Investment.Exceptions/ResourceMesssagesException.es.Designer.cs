@@ -22,14 +22,14 @@ namespace Gauss.Investment.Exceptions {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourceMesssagesException {
+    public class ResourceMesssagesException___Copy {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceMesssagesException() {
+        internal ResourceMesssagesException___Copy() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Gauss.Investment.Exceptions {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Gauss.Investment.Exceptions.ResourceMesssagesException", typeof(ResourceMesssagesException).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Gauss.Investment.Exceptions.ResourceMesssagesException - Copy", typeof(ResourceMesssagesException___Copy).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -93,15 +93,6 @@ namespace Gauss.Investment.Exceptions {
         public static string EMAIL_OR_PASSWORD_INVALID {
             get {
                 return ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid password.
-        /// </summary>
-        public static string INVALID_PASSWORD {
-            get {
-                return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
             }
         }
         
