@@ -8,7 +8,7 @@ namespace Gauss.Investment.Infrastructure.Migrations.Versions
         protected ICreateTableColumnOptionOrWithColumnSyntax CreateTable(string table)
         {
             return 
-                Create.Table("Users")
+                Create.Table(table)
                        .WithColumn("Id").AsGuid().PrimaryKey().WithDefault(SystemMethods.NewGuid)
                        .WithColumn("CreatedOn").AsDateTime().NotNullable()
                        .WithColumn("Active").AsBoolean().NotNullable();
