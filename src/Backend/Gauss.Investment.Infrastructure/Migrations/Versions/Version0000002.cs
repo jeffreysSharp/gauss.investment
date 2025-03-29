@@ -12,6 +12,21 @@ namespace Gauss.Investment.Infrastructure.Migrations.Versions
                 .WithColumn("RiskLevel").AsInt32().NotNullable()
                 .WithColumn("LiquidityInDays").AsInt32().NotNullable()
                 .WithColumn("UserId").AsGuid().NotNullable().ForeignKey("FK_Investment_User_Id", "Users", "Id");
+
+            CreateTable("InvestmentType")
+                .WithColumn("Name").AsString().NotNullable()
+                .WithColumn("InvestmentId").AsGuid().NotNullable().ForeignKey("FK_InvestmentType_Investment_Id", "Investments", "Id")
+                .OnDelete(System.Data.Rule.Cascade);
+
+            CreateTable("InvestmentCategory")
+                .WithColumn("Name").AsString().NotNullable()
+                .WithColumn("InvestmentId").AsGuid().NotNullable().ForeignKey("FK_InvestmentCategory_Investment_Id", "Investments", "Id")
+                .OnDelete(System.Data.Rule.Cascade);
+
+            CreateTable("InvestmentIssuer")
+                 .WithColumn("Name").AsInt32().NotNullable()
+                 .WithColumn("InvestmentId").AsGuid().NotNullable().ForeignKey("FK_InvestmentIssuer_Investment_Id", "Investments", "Id")
+                 .OnDelete(System.Data.Rule.Cascade);
         }
     }
 }
