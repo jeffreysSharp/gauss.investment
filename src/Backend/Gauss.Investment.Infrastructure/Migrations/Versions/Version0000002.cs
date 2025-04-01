@@ -9,21 +9,20 @@ namespace Gauss.Investment.Infrastructure.Migrations.Versions
         {
             CreateTable("Investments")
                 .WithColumn("Title").AsString().NotNullable()
-                .WithColumn("RiskLevel").AsInt32().NotNullable()
-                .WithColumn("LiquidityInDays").AsInt32().NotNullable()
+                .WithColumn("InvestmentType").AsInt32().NotNullable()
                 .WithColumn("UserId").AsGuid().NotNullable().ForeignKey("FK_Investment_User_Id", "Users", "Id");
 
-            CreateTable("InvestmentType")
+            CreateTable("InvestmentTypes")
                 .WithColumn("Name").AsString().NotNullable()
                 .WithColumn("InvestmentId").AsGuid().NotNullable().ForeignKey("FK_InvestmentType_Investment_Id", "Investments", "Id")
                 .OnDelete(System.Data.Rule.Cascade);
 
-            CreateTable("InvestmentCategory")
+            CreateTable("InvestmentCategories")
                 .WithColumn("Name").AsString().NotNullable()
                 .WithColumn("InvestmentId").AsGuid().NotNullable().ForeignKey("FK_InvestmentCategory_Investment_Id", "Investments", "Id")
                 .OnDelete(System.Data.Rule.Cascade);
 
-            CreateTable("InvestmentIssuer")
+            CreateTable("InvestmentIssuers")
                  .WithColumn("Name").AsInt32().NotNullable()
                  .WithColumn("InvestmentId").AsGuid().NotNullable().ForeignKey("FK_InvestmentIssuer_Investment_Id", "Investments", "Id")
                  .OnDelete(System.Data.Rule.Cascade);
