@@ -106,6 +106,33 @@ namespace Gauss.Investment.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unsupported investment category..
+        /// </summary>
+        public static string INVESTMENT_CATEGORY_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("INVESTMENT_CATEGORY_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The investment title cannot be empty..
+        /// </summary>
+        public static string INVESTMENT_TITLE_EMPTY {
+            get {
+                return ResourceManager.GetString("INVESTMENT_TITLE_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported investment type..
+        /// </summary>
+        public static string INVESTMENT_TYPE_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("INVESTMENT_TYPE_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The name cannot be empty..
         /// </summary>
         public static string NAME_EMPTY {

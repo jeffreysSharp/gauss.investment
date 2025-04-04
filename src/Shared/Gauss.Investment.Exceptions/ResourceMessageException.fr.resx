@@ -132,6 +132,15 @@
   <data name="INVALID_PASSWORD" xml:space="preserve">
     <value>Mot de passe invalide.</value>
   </data>
+  <data name="INVESTMENT_CATEGORY_NOT_SUPPORTED" xml:space="preserve">
+    <value>Catégorie d'investissement non prise en charge.</value>
+  </data>
+  <data name="INVESTMENT_TITLE_EMPTY" xml:space="preserve">
+    <value>Le titre de l'investissement ne peut pas être vide.</value>
+  </data>
+  <data name="INVESTMENT_TYPE_NOT_SUPPORTED" xml:space="preserve">
+    <value>Type d'investissement non pris en charge.</value>
+  </data>
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>Le nom ne peut pas étre vide.</value>
   </data>

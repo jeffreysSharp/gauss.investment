@@ -132,6 +132,15 @@
   <data name="INVALID_PASSWORD" xml:space="preserve">
     <value>Invalid password</value>
   </data>
+  <data name="INVESTMENT_CATEGORY_NOT_SUPPORTED" xml:space="preserve">
+    <value>Unsupported investment category.</value>
+  </data>
+  <data name="INVESTMENT_TITLE_EMPTY" xml:space="preserve">
+    <value>The investment title cannot be empty.</value>
+  </data>
+  <data name="INVESTMENT_TYPE_NOT_SUPPORTED" xml:space="preserve">
+    <value>Unsupported investment type.</value>
+  </data>
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>The name cannot be empty.</value>
   </data>
