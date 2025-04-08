@@ -89,5 +89,6 @@ namespace Validators.Test.Investment
 
             result.IsValid.Should().BeTrue();
         }
+
     }
 }

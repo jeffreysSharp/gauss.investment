@@ -133,6 +133,15 @@ namespace Gauss.Investment.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid investment issuer..
+        /// </summary>
+        public static string INVESTMENT_USSUER_NOT_SUPPORTED {
+            get {
+                return ResourceManager.GetString("INVESTMENT_USSUER_NOT_SUPPORTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The name cannot be empty..
         /// </summary>
         public static string NAME_EMPTY {
