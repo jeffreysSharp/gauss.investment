@@ -1,4 +1,5 @@
 ﻿using Gauss.Investment.Application.Services.AutoMapper;
+using Gauss.Investment.Application.UseCases.Investment.Register;
 using Gauss.Investment.Application.UseCases.Login.DoLogin;
 using Gauss.Investment.Application.UseCases.User.ChangePassword;
 using Gauss.Investment.Application.UseCases.User.Profile;
@@ -32,6 +33,7 @@ namespace Gauss.Investment.Application
             services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
             services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
             services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
+             // services.AddScoped<IRegisterInvestmentUseCase, RegisterInvestmentUseCase>();
         }
     }
 }

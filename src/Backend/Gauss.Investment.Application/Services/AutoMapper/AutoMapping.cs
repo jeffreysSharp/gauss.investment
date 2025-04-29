@@ -17,6 +17,9 @@ namespace Gauss.Investment.Application.Services.AutoMapper
         {
             CreateMap<RequestRegisterUser, Domain.Entities.User>()
                 .ForMember(dest => dest.Password, option => option.Ignore());
+
+            CreateMap<RequestInvestment, Domain.Entities.Investment>();
+
         }
 
         private void DomainToResponse()

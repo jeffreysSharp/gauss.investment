@@ -1,6 +1,4 @@
-﻿using Gauss.Investment.Domain.Enums;
-
-namespace Gauss.Investment.Domain.Entities
+﻿namespace Gauss.Investment.Domain.Entities
 {
     public class Investment : EntityBase
     {
@@ -8,6 +6,6 @@ namespace Gauss.Investment.Domain.Entities
         public IList<InvestmentType> InvestmentTypes { get; set; } = [];
         public IList<InvestmentCategory> InvestmentCategories { get; set; } = [];
         public IList<InvestmentIssuer> InvestmentIssuers { get; set; } = [];
-        public Guid InvestmentId { get; set; }
+        public Guid UserId { get; set; }
     }
 }

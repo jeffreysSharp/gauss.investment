@@ -70,7 +70,8 @@ namespace Gauss.Investment.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
-            services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();            
+            services.AddScoped<IUserUpdateOnlyRepository, UserRepository>(); 
+            // services.AddScoped<IInvestmentWriteOnlyRepository, InvestmentRepository>();
         }
 
         private static void AddFluentMIgrator_MySql(IServiceCollection services, IConfiguration configuration)

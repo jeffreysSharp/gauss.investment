@@ -8,6 +8,8 @@ namespace Gauss.Investment.Infrastructure.Data
         public GaussInvestmentDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Investment> Investments { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

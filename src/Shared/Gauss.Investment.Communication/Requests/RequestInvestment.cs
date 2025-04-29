@@ -5,8 +5,8 @@ namespace Gauss.Investment.Communication.Requests
     public class RequestInvestment
     {
         public string Title { get; set; } = string.Empty;
-        public InvestmentType? InvestmentType { get; set; }
-        public InvestmentCategory? InvestmentCategory { get; set; }
+        public InvestmentType? InvestmentTypes { get; set; }
+        public InvestmentCategory? InvestmentCategories { get; set; }
         public IList<InvestmentIssuer> InvestmentIssuers { get; set; } = [];
     }
 }
